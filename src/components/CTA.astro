@@ -5,7 +5,7 @@
     <div class="cta-box reveal">
       <div>
         <h2>Get A Tailored Quote For Your Team</h2>
-        <p class="lead">Tell Us A Little About Your Workplace And We'll Come Back With The Right Units, A Schedule That Fits, And A Clear Price — Usually Same Business Day.</p>
+        <p class="lead">Tell us a little about your workplace and we'll come back with the right units, a schedule that fits, and a clear price. Usually same business day.</p>
         <ul class="cta-list">
           <li>
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>
@@ -21,40 +21,121 @@
           </li>
         </ul>
         <div class="cta-actions">
-          <a href="tel:+61481360972" class="btn btn-primary">📞 Call +61 481 360 972</a>
-          <a href="mailto:info@lifefirstaidcourses.com.au" class="btn btn-ghost" style="color:#fff;border-color:rgba(255,255,255,.3)">✉ info@lifefirstaidcourses.com.au</a>
+          <a href="tel:+61481360972" class="btn btn-primary">Call +61 481 360 972</a>
+          <a href="mailto:info@lifefirstaidcourses.com.au" class="btn btn-ghost" style="color:#fff;border-color:rgba(255,255,255,.3)">info@lifefirstaidcourses.com.au</a>
         </div>
       </div>
-      <div class="form" role="form" aria-label="Quote Request Form">
-        <label for="name">Your Name</label>
-        <input id="name" type="text" placeholder="Jane Smith" autocomplete="name" />
-        <div class="form-error" id="name-error" role="alert">Please Enter Your Name.</div>
+      <div>
+        <form class="form" id="quoteForm" novalidate>
+          <input type="hidden" name="_subject" value="Training Quote Request — Life First Aid Courses" />
 
-        <label for="email">Your Email</label>
-        <input id="email" type="email" placeholder="jane@example.com" autocomplete="email" />
-        <div class="form-error" id="email-error" role="alert">Please Enter A Valid Email Address.</div>
+          <label for="cta-name">Your Name</label>
+          <input id="cta-name" name="name" type="text" placeholder="Jane Smith" autocomplete="name" />
+          <div class="form-error" id="name-error" role="alert">Please enter your name.</div>
 
-        <label for="org">Organisation &amp; Industry</label>
-        <input id="org" type="text" placeholder="E.g. ABC Constructions — Building Site" />
+          <label for="cta-email">Your Email</label>
+          <input id="cta-email" name="email" type="email" placeholder="jane@example.com" autocomplete="email" />
+          <div class="form-error" id="email-error" role="alert">Please enter a valid email address.</div>
 
-        <label for="ind">What Best Describes You?</label>
-        <select id="ind">
-          <option>High-Risk Worksite (Construction / Mining / Manufacturing)</option>
-          <option>Education &amp; Childcare</option>
-          <option>Hospitality &amp; Events</option>
-          <option>Community Group / Event</option>
-          <option>Individual / Family</option>
-        </select>
+          <label for="cta-org">Organisation &amp; Industry</label>
+          <input id="cta-org" name="organisation" type="text" placeholder="E.g. ABC Constructions — Building Site" />
 
-        <label for="people">How Many People Need Training?</label>
-        <input id="people" type="text" placeholder="E.g. 12" />
+          <label for="cta-ind">What Best Describes You?</label>
+          <select id="cta-ind" name="type">
+            <option>High-Risk Worksite (Construction / Mining / Manufacturing)</option>
+            <option>Education &amp; Childcare</option>
+            <option>Hospitality &amp; Events</option>
+            <option>Community Group / Event</option>
+            <option>Individual / Family</option>
+          </select>
 
-        <label for="msg">Anything Else?</label>
-        <textarea id="msg" rows="2" placeholder="Units Needed, Preferred Dates, Site Location…"></textarea>
+          <label for="cta-people">How Many People Need Training?</label>
+          <input id="cta-people" name="people" type="text" placeholder="E.g. 12" />
 
-        <button class="btn btn-primary" id="sendBtn" type="button">Request My Quote →</button>
-        <p class="fineprint">Opens Your Email So You Can Send — Or Just Call Us Directly.</p>
+          <label for="cta-msg">Anything Else?</label>
+          <textarea id="cta-msg" name="message" rows="2" placeholder="Units needed, preferred dates, site location…"></textarea>
+
+          <button class="btn btn-primary" id="sendBtn" type="submit">Request My Quote →</button>
+          <p class="fineprint">We'll respond same business day.</p>
+          <div class="form-error form-submit-error" id="submit-error" role="alert">
+            Something went wrong — please call us or try again.
+          </div>
+        </form>
+
+        <div class="form-success" id="formSuccess" hidden>
+          <svg class="form-success-icon" viewBox="0 0 48 48" aria-hidden="true">
+            <circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="2" fill="none"/>
+            <path d="M14 24l7 7 13-13" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>
+          <h3>Quote request sent.</h3>
+          <p>We'll be in touch same business day. Keep an eye on your inbox.</p>
+          <a href="tel:+61481360972" class="btn btn-primary" style="margin-top:8px">Call us: +61 481 360 972</a>
+        </div>
       </div>
     </div>
   </div>
 </section>
+
+<script>
+  // Get your form ID from formspree.io → New Form → copy the ID from the endpoint
+  const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID';
+
+  const form = document.getElementById('quoteForm') as HTMLFormElement | null;
+  const sendBtn = document.getElementById('sendBtn') as HTMLButtonElement | null;
+  const nameErr = document.getElementById('name-error');
+  const emailErr = document.getElementById('email-error');
+  const submitErr = document.getElementById('submit-error');
+  const formSuccess = document.getElementById('formSuccess');
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const nameEl = document.getElementById('cta-name') as HTMLInputElement;
+    const emailEl = document.getElementById('cta-email') as HTMLInputElement;
+
+    if (nameErr) nameErr.style.display = 'none';
+    if (emailErr) emailErr.style.display = 'none';
+    if (submitErr) submitErr.style.display = 'none';
+
+    let valid = true;
+
+    if (!nameEl?.value.trim()) {
+      if (nameErr) nameErr.style.display = 'block';
+      nameEl?.focus();
+      valid = false;
+    }
+
+    const emailVal = emailEl?.value.trim() ?? '';
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal)) {
+      if (emailErr) emailErr.style.display = 'block';
+      if (valid) emailEl?.focus();
+      valid = false;
+    }
+
+    if (!valid) return;
+
+    if (sendBtn) {
+      sendBtn.disabled = true;
+      sendBtn.textContent = 'Sending…';
+    }
+
+    try {
+      const res = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: new FormData(form!),
+      });
+
+      if (res.ok) {
+        form!.hidden = true;
+        if (formSuccess) formSuccess.hidden = false;
+      } else {
+        if (submitErr) submitErr.style.display = 'block';
+        if (sendBtn) { sendBtn.disabled = false; sendBtn.textContent = 'Request My Quote →'; }
+      }
+    } catch {
+      if (submitErr) submitErr.style.display = 'block';
+      if (sendBtn) { sendBtn.disabled = false; sendBtn.textContent = 'Request My Quote →'; }
+    }
+  });
+</script>

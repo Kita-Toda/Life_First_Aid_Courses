@@ -1409,6 +1409,45 @@ nav .wrap {
   display: none;
 }
 
+.form-submit-error {
+  margin-top: 10px;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.form-success {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 44px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+}
+
+.form-success-icon {
+  width: 52px;
+  height: 52px;
+  color: var(--teal);
+  margin-bottom: 6px;
+}
+
+.form-success h3 {
+  font-size: 1.1875rem;
+  font-weight: 800;
+  color: #fff;
+  font-family: var(--font-display);
+}
+
+.form-success p {
+  color: #a8bcbb;
+  font-size: 15px;
+  line-height: 1.55;
+  max-width: 30ch;
+}
+
 @media (min-width: 920px) {
   .cta {
     padding: 84px 0;
@@ -1598,20 +1637,21 @@ footer a:hover {
 }
 
 /* ---- REVEAL ANIMATION ---- */
-.reveal {
+/* Visible by default — JS adds .js-reveal to <html> to arm transitions */
+.js-reveal .reveal {
   opacity: 0;
   transform: translateY(24px);
-  transition: 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition: opacity 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-.reveal.in {
+.js-reveal .reveal.in {
   opacity: 1;
   transform: none;
 }
 
 /* ---- ACCESSIBILITY ---- */
 @media (prefers-reduced-motion: reduce) {
-  .reveal {
+  .js-reveal .reveal {
     opacity: 1;
     transform: none;
     transition: none;
