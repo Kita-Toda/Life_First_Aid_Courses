@@ -1,0 +1,259 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import TopBar from '../../components/TopBar.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import { courses } from '../../data/courses';
+import type { CourseDetail } from '../../data/courses';
+
+export function getStaticPaths() {
+  return courses.map(course => ({
+    params: { slug: course.slug },
+    props: { course },
+  }));
+}
+
+interface Props { course: CourseDetail }
+const { course } = Astro.props;
+
+const categoryLabel: Record<CourseDetail['category'], string> = {
+  core: 'Core First Aid',
+  emergency: 'Emergency Response',
+  safety: 'Health & Safety',
+  mental: 'Mental Health & Allied Health',
+  sports: 'Sports & Recreation',
+  workshop: 'Workshops & Awareness',
+};
+
+const categoryClass: Record<CourseDetail['category'], string> = {
+  core: 'cat-core',
+  emergency: 'cat-emergency',
+  safety: 'cat-safety',
+  mental: 'cat-mental',
+  sports: 'cat-sports',
+  workshop: 'cat-workshop',
+};
+---
+
+<Layout
+  title={`${course.code} — ${course.name} | Life First Aid Courses`}
+  description={course.fullDescription.slice(0, 155)}
+>
+  <TopBar />
+  <Nav />
+  <div class="course-detail-page">
+    <div class="course-detail-hero">
+      <div class="container">
+        <a href="/#courses" class="back-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M19 12H5M12 5l-7 7 7 7"/>
+          </svg>
+          All Courses
+        </a>
+        <div class="course-detail-meta">
+          <span class={`cat-label ${categoryClass[course.category]}`}>{categoryLabel[course.category]}</span>
+          {course.accredited
+            ? <span class="badge badge-acc">Nationally Recognised</span>
+            : <span class="badge badge-non">Non-Accredited</span>
+          }
+        </div>
+        <h1>
+          <span class="course-detail-code">{course.code}</span>
+          {course.name}
+        </h1>
+        <p class="course-detail-lead">{course.fullDescription}</p>
+        <a href={course.bookingUrl} class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+          Book This Course
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="course-detail-body container">
+
+      <div class="detail-grid">
+
+        <!-- Duration -->
+        <section class="detail-card">
+          <h2>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+            </svg>
+            Duration
+          </h2>
+          <ul class="duration-list">
+            {course.duration.map(d => (
+              <li>
+                <span class="duration-label">{d.label}</span>
+                <span class="duration-value">{d.value}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <!-- Renewal -->
+        <section class="detail-card">
+          <h2>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/>
+              <path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/>
+            </svg>
+            Certificate Renewal
+          </h2>
+          <p class="renewal-text">{course.renewal}</p>
+        </section>
+
+        <!-- Delivery Modes -->
+        <section class="detail-card">
+          <h2>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
+            </svg>
+            Delivery Options
+          </h2>
+          <ul class="bullet-list">
+            {course.deliveryModes.map(mode => <li>{mode}</li>)}
+          </ul>
+        </section>
+
+        <!-- Prerequisites -->
+        <section class="detail-card">
+          <h2>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 11l3 3L22 4"/>
+              <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/>
+            </svg>
+            Prerequisites & Entry Requirements
+          </h2>
+          <ul class="bullet-list">
+            {course.prerequisites.map(p => <li>{p}</li>)}
+          </ul>
+        </section>
+
+        <!-- Units (if present) -->
+        {course.units && course.units.length > 0 && (
+          <section class="detail-card detail-card--wide">
+            <h2>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+                <polyline points="14 2 14 8 20 8"/>
+              </svg>
+              Units Of Competency Included
+            </h2>
+            <ul class="units-list">
+              {course.units.map(u => <li>{u}</li>)}
+            </ul>
+          </section>
+        )}
+
+        <!-- Learning Outcomes -->
+        <section class="detail-card detail-card--wide">
+          <h2>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+            </svg>
+            What You Will Learn
+          </h2>
+          <ul class="outcomes-list">
+            {course.outcomes.map(o => (
+              <li>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+                {o}
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <!-- Who Is This For -->
+        <section class="detail-card detail-card--wide">
+          <h2>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="8" r="4"/>
+              <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+            </svg>
+            Who Is This Course For?
+          </h2>
+          <p class="audience-text">{course.audience}</p>
+        </section>
+
+      </div>
+
+      <!-- CTA -->
+      <div class="course-detail-cta">
+        <p>Ready to book or have a question about this course?</p>
+        <div class="cta-actions">
+          <a href={course.bookingUrl} class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+            Book Online
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+          <a href="tel:0481360972" class="btn btn-ghost">Call 0481 360 972</a>
+        </div>
+        <div class="rto-partner-strip rto-partner-strip--detail">
+          <span class="rto-partner-label">Delivered In Partnership With A Registered Training Organisation</span>
+          <img src="/allens-rto.png" alt="Allens Training — Registered Training Organisation" class="rto-partner-logo" />
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <Footer />
+</Layout>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  import 'animate.css';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Hero entrance
+  gsap.from('.course-detail-hero', {
+    opacity: 0,
+    y: 40,
+    duration: 0.7,
+    ease: 'power3.out',
+  });
+
+  // Back link + meta
+  gsap.from('.back-link, .course-detail-meta', {
+    opacity: 0,
+    y: 20,
+    duration: 0.5,
+    stagger: 0.1,
+    delay: 0.2,
+    ease: 'power2.out',
+  });
+
+  // Detail cards stagger in on scroll
+  gsap.from('.detail-card', {
+    scrollTrigger: {
+      trigger: '.detail-grid',
+      start: 'top 85%',
+    },
+    opacity: 0,
+    y: 30,
+    duration: 0.5,
+    stagger: 0.12,
+    ease: 'power2.out',
+  });
+
+  // CTA block
+  gsap.from('.course-detail-cta', {
+    scrollTrigger: {
+      trigger: '.course-detail-cta',
+      start: 'top 90%',
+    },
+    opacity: 0,
+    y: 24,
+    duration: 0.5,
+    ease: 'power2.out',
+  });
+</script>

@@ -1,0 +1,168 @@
+---
+import Layout from '../layouts/Layout.astro';
+import TopBar from '../components/TopBar.astro';
+import Nav from '../components/Nav.astro';
+import Hero from '../components/Hero.astro';
+import TrustBand from '../components/TrustBand.astro';
+import Industries from '../components/Industries.astro';
+import Courses from '../components/Courses.astro';
+import Why from '../components/Why.astro';
+import Steps from '../components/Steps.astro';
+import Reviews from '../components/Reviews.astro';
+import Area from '../components/Area.astro';
+import CTA from '../components/CTA.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout>
+  <TopBar />
+  <Nav />
+  <Hero />
+  <TrustBand />
+  <Industries />
+  <Courses />
+  <Why />
+  <Steps />
+  <Reviews />
+  <Area />
+  <CTA />
+  <Footer />
+</Layout>
+
+<script>
+  // Year in footer
+  const yrEl = document.getElementById('yr');
+  if (yrEl) yrEl.textContent = String(new Date().getFullYear());
+
+  // Nav scroll shadow
+  const nav = document.getElementById('nav');
+  if (nav) {
+    window.addEventListener('scroll', () => {
+      nav.style.boxShadow = window.scrollY > 20
+        ? '0 6px 24px -16px rgba(18,34,44,.4)'
+        : 'none';
+    }, { passive: true });
+  }
+
+  // Mobile burger menu
+  const burger = document.getElementById('burger');
+  const navlinks = document.getElementById('navlinks');
+  const navOverlay = document.getElementById('navOverlay');
+
+  function openNav() {
+    navlinks?.classList.add('open');
+    navOverlay?.classList.add('open');
+    burger?.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeNav() {
+    navlinks?.classList.remove('open');
+    navOverlay?.classList.remove('open');
+    burger?.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+
+  burger?.addEventListener('click', () => {
+    const isOpen = navlinks?.classList.contains('open');
+    isOpen ? closeNav() : openNav();
+  });
+
+  navOverlay?.addEventListener('click', closeNav);
+
+  navlinks?.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', closeNav);
+  });
+
+  // Reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('in'), (i % 3) * 80);
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // ECG animation with visibility pause
+  const ecg = document.getElementById('ecgline');
+  if (ecg) {
+    const pathEl = ecg as unknown as SVGPathElement;
+    const len = pathEl.getTotalLength();
+    pathEl.style.strokeDasharray = String(len);
+    let off = len;
+    let animId = 0;
+
+    function tick() {
+      off -= len / 120;
+      if (off <= 0) off = len;
+      pathEl.style.strokeDashoffset = String(off);
+      animId = requestAnimationFrame(tick);
+    }
+
+    if (!document.hidden) {
+      animId = requestAnimationFrame(tick);
+    }
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        cancelAnimationFrame(animId);
+      } else {
+        animId = requestAnimationFrame(tick);
+      }
+    });
+  }
+
+  // Quote form validation + mailto
+  const sendBtn = document.getElementById('sendBtn');
+  if (sendBtn) {
+    sendBtn.addEventListener('click', () => {
+      const nameEl = document.getElementById('name') as HTMLInputElement;
+      const emailEl = document.getElementById('email') as HTMLInputElement;
+      const orgEl = document.getElementById('org') as HTMLInputElement;
+      const indEl = document.getElementById('ind') as HTMLSelectElement;
+      const peopleEl = document.getElementById('people') as HTMLInputElement;
+      const msgEl = document.getElementById('msg') as HTMLTextAreaElement;
+      const nameErr = document.getElementById('name-error');
+      const emailErr = document.getElementById('email-error');
+
+      let valid = true;
+
+      if (nameErr) nameErr.style.display = 'none';
+      if (emailErr) emailErr.style.display = 'none';
+
+      if (!nameEl?.value.trim()) {
+        if (nameErr) nameErr.style.display = 'block';
+        nameEl?.focus();
+        valid = false;
+      }
+
+      const emailVal = emailEl?.value.trim() ?? '';
+      const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal);
+      if (!emailOk) {
+        if (emailErr) emailErr.style.display = 'block';
+        if (valid) emailEl?.focus();
+        valid = false;
+      }
+
+      if (!valid) return;
+
+      const v = (el: HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement | null) =>
+        el instanceof HTMLInputElement || el instanceof HTMLTextAreaElement ? el.value.trim() : el?.value ?? '';
+
+      const body = [
+        `Name: ${v(nameEl)}`,
+        `Email: ${v(emailEl)}`,
+        `Organisation/Industry: ${v(orgEl)}`,
+        `Type: ${v(indEl)}`,
+        `People To Train: ${v(peopleEl)}`,
+        ``,
+        `Details: ${v(msgEl)}`,
+      ].join('%0D%0A');
+
+      window.location.href = `mailto:info@lifefirstaidcourses.com.au?subject=Training Quote Request&body=${body}`;
+    });
+  }
+</script>

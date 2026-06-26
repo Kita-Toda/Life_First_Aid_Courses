@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Life First Aid Courses | Nationally Recognised Workplace First Aid Training — Blue Mountains &amp; Greater Western Sydney</title>
+<meta name="description" content="On-site and blended nationally recognised first aid training for high-risk industries, childcare & education, hospitality and community groups. Audit-ready certificates, flexible scheduling, 10+ years' experience. Based in Blaxland, serving the Blue Mountains & Greater Western Sydney." />
+<meta property="og:locale" content="en_AU" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#12222c; --ink2:#1b3340; --slate:#5a6b74;
+  --paper:#f5f3ec; --cream:#fbfaf4; --card:#ffffff;
+  --red:#e03b30; --red-deep:#b22a21;
+  --teal:#0d7c6b; --teal-deep:#0a5d50; --teal-soft:#e3f0ed;
+  --amber:#f0a92b;
+  --line:#e0dccf; --line2:#d2ccbd;
+  --shadow:0 18px 50px -22px rgba(18,34,44,.35);
+  --maxw:1180px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Public Sans',sans-serif;color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased;line-height:1.6}
+h1,h2,h3,h4,.disp{font-family:'Bricolage Grotesque',sans-serif;line-height:1.05;letter-spacing:-.02em}
+a{color:inherit;text-decoration:none}
+img{max-width:100%}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+section{position:relative}
+.kicker{display:inline-flex;align-items:center;gap:8px;font-family:'Public Sans';font-weight:700;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-deep)}
+.kicker::before{content:"";width:22px;height:2px;background:var(--red)}
+.btn{display:inline-flex;align-items:center;gap:9px;font-weight:700;font-size:15px;padding:14px 24px;border-radius:10px;transition:.18s;border:2px solid transparent;cursor:pointer}
+.btn-primary{background:var(--red);color:#fff;box-shadow:0 10px 24px -10px rgba(224,59,48,.7)}
+.btn-primary:hover{background:var(--red-deep);transform:translateY(-2px)}
+.btn-dark{background:var(--ink);color:#fff}
+.btn-dark:hover{background:var(--ink2);transform:translateY(-2px)}
+.btn-ghost{background:transparent;color:var(--ink);border-color:var(--line2)}
+.btn-ghost:hover{border-color:var(--ink);background:#fff}
+
+/* ---- top strip ---- */
+.topbar{background:var(--ink);color:#d7e2e0;font-size:13px;font-weight:500}
+.topbar .wrap{display:flex;justify-content:space-between;align-items:center;padding-top:9px;padding-bottom:9px;gap:14px;flex-wrap:wrap}
+.topbar b{color:#fff}
+.topbar .tags{display:flex;gap:18px;flex-wrap:wrap}
+.topbar .tags span{display:inline-flex;align-items:center;gap:6px}
+.topbar .tags svg{width:15px;height:15px;stroke:var(--amber)}
+.topbar a{color:#fff;font-weight:700}
+
+/* ---- nav ---- */
+nav{position:sticky;top:0;z-index:100;background:rgba(251,250,244,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;padding-top:14px;padding-bottom:14px}
+.logo{display:flex;align-items:center;gap:12px}
+.logo .cross{width:42px;height:42px;border-radius:11px;background:var(--red);display:grid;place-items:center;flex:none;box-shadow:0 6px 16px -6px rgba(224,59,48,.8)}
+.logo .cross svg{width:24px;height:24px;stroke:#fff;stroke-width:2.4;fill:none}
+.logo b{font-family:'Bricolage Grotesque';font-weight:800;font-size:19px;line-height:1;letter-spacing:-.02em;color:var(--ink)}
+.logo b span{display:block;font-family:'Public Sans';font-weight:600;font-size:10.5px;letter-spacing:.18em;color:var(--teal-deep);margin-top:3px}
+.navlinks{display:flex;align-items:center;gap:26px}
+.navlinks a:not(.btn){font-weight:600;font-size:14.5px;color:var(--ink2);transition:.15s}
+.navlinks a:not(.btn):hover{color:var(--red)}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer}
+.burger span{width:26px;height:2.6px;background:var(--ink);border-radius:3px;transition:.3s}
+
+/* ---- hero ---- */
+.hero{padding:74px 0 64px;background:
+  radial-gradient(1100px 460px at 88% -8%,rgba(13,124,107,.10),transparent 60%),
+  radial-gradient(700px 360px at -5% 110%,rgba(224,59,48,.07),transparent 60%);
+  overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.08fr .92fr;gap:54px;align-items:center}
+.hero h1{font-size:clamp(38px,5vw,62px);font-weight:800;margin:18px 0 0}
+.hero h1 em{font-style:normal;color:var(--red)}
+.hero .lead{font-size:18px;color:var(--ink2);max-width:520px;margin:20px 0 12px}
+.hero .micro{font-size:15px;color:var(--slate);max-width:500px;margin-bottom:26px}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:26px}
+.hero-chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{display:inline-flex;align-items:center;gap:7px;background:#fff;border:1px solid var(--line);border-radius:30px;padding:7px 14px;font-size:13px;font-weight:600;color:var(--ink2)}
+.chip svg{width:15px;height:15px;stroke:var(--teal);stroke-width:2.5;fill:none}
+
+/* hero card */
+.hero-card{background:var(--ink);border-radius:22px;padding:30px;color:#eaf1f0;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.hero-card::before{content:"";position:absolute;inset:0;background:radial-gradient(400px 200px at 80% 0,rgba(13,124,107,.4),transparent 60%);pointer-events:none}
+.hero-card h3{font-size:15px;font-weight:700;color:#fff;letter-spacing:.04em;text-transform:uppercase;margin-bottom:4px;position:relative}
+.hero-card .sub{font-size:13.5px;color:#9fb4b3;margin-bottom:18px;position:relative}
+.ecg{height:78px;width:100%;position:relative;margin-bottom:20px}
+.ecg svg{width:100%;height:100%}
+.ecg path{fill:none;stroke:var(--red);stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 6px rgba(224,59,48,.6))}
+.hero-stats{display:grid;grid-template-columns:1fr 1fr;gap:14px;position:relative}
+.hero-stat{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.09);border-radius:13px;padding:16px}
+.hero-stat b{font-family:'Bricolage Grotesque';font-weight:800;font-size:26px;color:#fff;display:block;line-height:1}
+.hero-stat span{font-size:12.5px;color:#a8bcbb;font-weight:600}
+.hero-stat.full{grid-column:1/-1;display:flex;align-items:center;gap:12px}
+.hero-stat.full svg{width:26px;height:26px;stroke:var(--amber);stroke-width:2;fill:none;flex:none}
+.hero-stat.full p{font-size:13.5px;color:#cfe0de;font-weight:500;margin:0}
+
+/* ---- trust band ---- */
+.trustband{background:var(--ink2);color:#cfe0de}
+.trustband .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:18px;padding:18px 24px}
+.trustband div{display:flex;align-items:center;gap:9px;font-size:13.5px;font-weight:600}
+.trustband svg{width:18px;height:18px;stroke:var(--amber);stroke-width:2;fill:none;flex:none}
+
+/* ---- generic section head ---- */
+.shead{max-width:680px;margin-bottom:42px}
+.shead h2{font-size:clamp(28px,4vw,44px);font-weight:800;margin:14px 0 12px}
+.shead p{font-size:16.5px;color:var(--slate)}
+.center{margin-left:auto;margin-right:auto;text-align:center}
+.center .kicker{justify-content:center}
+
+/* ---- industries ---- */
+.industries{padding:84px 0;background:var(--cream)}
+.ind-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.ind{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:30px;transition:.2s;position:relative;overflow:hidden}
+.ind:hover{border-color:var(--teal);transform:translateY(-4px);box-shadow:var(--shadow)}
+.ind .top{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.ind .ic{width:52px;height:52px;border-radius:13px;background:var(--teal-soft);display:grid;place-items:center;flex:none}
+.ind .ic svg{width:27px;height:27px;stroke:var(--teal-deep);stroke-width:2;fill:none}
+.ind h3{font-size:21px;font-weight:700}
+.ind .who{font-size:13px;color:var(--red-deep);font-weight:700;letter-spacing:.03em}
+.ind p{font-size:15px;color:var(--ink2);margin-bottom:14px}
+.ind ul{list-style:none;display:grid;gap:8px}
+.ind li{display:flex;gap:9px;font-size:14px;color:var(--slate);font-weight:500}
+.ind li svg{width:17px;height:17px;stroke:var(--teal);stroke-width:2.6;fill:none;flex:none;margin-top:3px}
+
+/* ---- courses ---- */
+.courses{padding:84px 0;background:var(--paper)}
+.course-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.course{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px;transition:.2s;display:flex;flex-direction:column}
+.course:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:var(--line2)}
+.course .code{font-family:'Public Sans';font-weight:700;font-size:12px;letter-spacing:.08em;color:var(--teal-deep);background:var(--teal-soft);padding:5px 10px;border-radius:7px;align-self:flex-start;margin-bottom:13px}
+.course h3{font-size:18.5px;font-weight:700;margin-bottom:8px}
+.course p{font-size:14px;color:var(--slate);margin-bottom:14px;flex:1}
+.course .meta{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--ink2);font-weight:600;border-top:1px solid var(--line);padding-top:13px}
+.course .meta svg{width:16px;height:16px;stroke:var(--red);stroke-width:2.2;fill:none}
+.course-note{text-align:center;color:var(--slate);font-size:14px;margin-top:28px;font-style:italic}
+
+/* ---- why ---- */
+.why{padding:84px 0;background:var(--ink);color:#dfeae8}
+.why .kicker{color:var(--amber)}
+.why .kicker::before{background:var(--amber)}
+.why h2{color:#fff}
+.why .shead p{color:#a8bcbb}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.feat{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:16px;padding:26px}
+.feat .ic{width:46px;height:46px;border-radius:11px;background:rgba(240,169,43,.16);display:grid;place-items:center;margin-bottom:15px}
+.feat .ic svg{width:24px;height:24px;stroke:var(--amber);stroke-width:2;fill:none}
+.feat h3{font-size:18px;font-weight:700;color:#fff;margin-bottom:7px}
+.feat p{font-size:14.5px;color:#a8bcbb}
+
+/* ---- steps ---- */
+.steps{padding:84px 0;background:var(--cream)}
+.step-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:s}
+.step{position:relative;padding-top:14px}
+.step .num{font-family:'Bricolage Grotesque';font-weight:800;font-size:46px;color:var(--line2);line-height:1}
+.step h3{font-size:18px;font-weight:700;margin:8px 0 7px}
+.step p{font-size:14.5px;color:var(--slate)}
+.step:not(:last-child)::after{content:"";position:absolute;top:30px;right:-12px;width:24px;height:2px;background:var(--line2)}
+
+/* ---- reviews ---- */
+.reviews{padding:84px 0;background:var(--paper)}
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.rev{background:#fff;border:1px solid var(--line);border-radius:16px;padding:28px;position:relative}
+.rev .stars{color:var(--amber);letter-spacing:2px;font-size:16px;margin-bottom:12px}
+.rev blockquote{font-size:15px;color:var(--ink2);line-height:1.55}
+.rev .who{margin-top:18px;display:flex;align-items:center;gap:12px;border-top:1px solid var(--line);padding-top:16px}
+.rev .av{width:42px;height:42px;border-radius:50%;background:var(--teal);color:#fff;display:grid;place-items:center;font-family:'Bricolage Grotesque';font-weight:700;flex:none}
+.rev .who b{font-size:15px;display:block}
+.rev .who small{font-size:12.5px;color:var(--slate)}
+
+/* ---- service area ---- */
+.area{padding:64px 0;background:var(--cream);border-top:1px solid var(--line)}
+.area .wrap{display:grid;grid-template-columns:1fr 1.1fr;gap:40px;align-items:center}
+.area h2{font-size:clamp(26px,3.5vw,38px);font-weight:800;margin:12px 0 12px}
+.area p{color:var(--slate);font-size:16px;margin-bottom:18px}
+.towns{display:flex;flex-wrap:wrap;gap:9px}
+.town{background:#fff;border:1px solid var(--line);border-radius:30px;padding:7px 15px;font-size:13.5px;font-weight:600;color:var(--ink2)}
+.map{background:var(--teal-soft);border:1px solid var(--line);border-radius:18px;min-height:280px;display:grid;place-items:center;text-align:center;color:var(--teal-deep);font-weight:600;padding:24px;position:relative;overflow:hidden}
+.map svg{width:54px;height:54px;stroke:var(--teal-deep);stroke-width:1.6;fill:none;margin-bottom:10px}
+.map small{display:block;color:var(--slate);font-weight:500;font-size:13px;margin-top:6px}
+
+/* ---- CTA / quote ---- */
+.cta{padding:84px 0;background:
+  linear-gradient(180deg,var(--paper),var(--cream))}
+.cta-box{background:var(--ink);border-radius:26px;padding:48px;color:#eaf1f0;display:grid;grid-template-columns:1fr 1fr;gap:44px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.cta-box::before{content:"";position:absolute;right:-80px;top:-80px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(13,124,107,.4),transparent 70%)}
+.cta-box h2{font-size:clamp(28px,3.6vw,40px);font-weight:800;color:#fff;position:relative}
+.cta-box .lead{color:#a8bcbb;font-size:16px;margin:14px 0 22px;position:relative}
+.cta-list{list-style:none;display:grid;gap:11px;position:relative}
+.cta-list li{display:flex;gap:10px;font-size:14.5px;color:#cfe0de;font-weight:500}
+.cta-list svg{width:18px;height:18px;stroke:var(--amber);stroke-width:2.4;fill:none;flex:none;margin-top:3px}
+.cta-actions{margin-top:24px;display:flex;flex-direction:column;gap:10px;position:relative}
+.cta-actions .btn{justify-content:center}
+.form{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:26px;position:relative}
+.form label{display:block;font-size:12.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#9fb4b3;margin:0 0 6px}
+.form input,.form select,.form textarea{width:100%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);border-radius:10px;padding:12px 13px;color:#fff;font-family:inherit;font-size:14.5px;margin-bottom:14px}
+.form input::placeholder,.form textarea::placeholder{color:#7f9694}
+.form input:focus,.form select:focus,.form textarea:focus{outline:none;border-color:var(--amber)}
+.form select option{color:#13222c}
+.form .btn{width:100%;justify-content:center;margin-top:4px}
+.form .fineprint{font-size:12px;color:#7f9694;margin-top:10px;text-align:center}
+
+/* ---- footer ---- */
+footer{background:var(--ink2);color:#a8bcbb;padding:54px 0 26px;font-size:14px}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:36px;margin-bottom:34px}
+footer .logo b{color:#fff}
+footer p{margin-top:14px;max-width:320px}
+footer h4{color:#fff;font-size:14px;letter-spacing:.05em;text-transform:uppercase;margin-bottom:14px;font-weight:700}
+footer ul{list-style:none;display:grid;gap:9px}
+footer a:hover{color:#fff}
+.foot-contact div{display:flex;gap:9px;margin-bottom:11px}
+.foot-contact svg{width:17px;height:17px;stroke:var(--amber);stroke-width:2;fill:none;flex:none;margin-top:3px}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:13px}
+.edit{color:var(--amber);font-style:italic;font-size:12.5px}
+
+/* ---- reveal ---- */
+.reveal{opacity:0;transform:translateY(26px);transition:.65s cubic-bezier(.2,.8,.2,1)}
+.reveal.in{opacity:1;transform:none}
+
+/* ---- responsive ---- */
+@media(max-width:920px){
+  .hero .wrap,.area .wrap,.cta-box{grid-template-columns:1fr}
+  .ind-grid,.course-grid,.why-grid,.rev-grid{grid-template-columns:1fr 1fr}
+  .step-grid{grid-template-columns:1fr 1fr}
+  .step::after{display:none}
+  .navlinks{position:fixed;inset:0 0 0 auto;width:80%;max-width:320px;background:var(--ink);flex-direction:column;justify-content:center;gap:24px;transform:translateX(100%);transition:.32s;padding:40px}
+  .navlinks.open{transform:none}
+  .navlinks a:not(.btn){color:#fff;font-size:18px}
+  .burger{display:flex;z-index:110}
+}
+@media(max-width:600px){
+  .ind-grid,.course-grid,.why-grid,.rev-grid,.step-grid,.foot-grid{grid-template-columns:1fr}
+  .hero-stats{grid-template-columns:1fr 1fr}
+  .cta-box{padding:30px}
+}
+</style>
+</head>
+<body>
+
+<!-- TOP STRIP -->
+<div class="topbar">
+  <div class="wrap">
+    <div class="tags">
+      <span><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Nationally recognised training</span>
+      <span><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l8 4v6c0 5-8 8-8 8s-8-3-8-8V7z" stroke-width="2" stroke-linejoin="round"/></svg> Audit-ready certificates</span>
+    </div>
+    <div>Call us today: <a href="tel:+61481360972">+61 481 360 972</a></div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="wrap">
+    <a href="#top" class="logo">
+      <span class="cross"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span>
+      <b>Life First Aid<span>BLAXLAND · NSW</span></b>
+    </a>
+    <div class="navlinks" id="navlinks">
+      <a href="#industries">Industries</a>
+      <a href="#courses">Courses</a>
+      <a href="#why">Why Us</a>
+      <a href="#how">How It Works</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#quote" class="btn btn-primary">Get a Quote</a>
+    </div>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <span class="kicker">Blue Mountains &amp; Greater Western Sydney</span>
+      <h1>Workplace first aid training that keeps your team <em>compliant — and ready.</em></h1>
+      <p class="lead">On-site and blended, nationally recognised first aid courses built around your industry, your hazards and your roster — not a one-size-fits-all classroom.</p>
+      <p class="micro">Trusted by high-risk worksites, childcare and schools, hospitality venues and community groups across the region. Flawless, audit-ready documentation every time.</p>
+      <div class="hero-ctas">
+        <a href="#quote" class="btn btn-primary">Book your team's training →</a>
+        <a href="tel:+61481360972" class="btn btn-ghost">📞 +61 481 360 972</a>
+      </div>
+      <div class="hero-chips">
+        <span class="chip"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> On-site at your venue</span>
+        <span class="chip"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> Blended online + practical</span>
+        <span class="chip"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> Fast certificate turnaround</span>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>Ready when it matters most</h3>
+      <p class="sub">54,000 Australians suffer a heart attack each year. 120,000+ suffer a serious workplace injury. Trained staff change outcomes.</p>
+      <div class="ecg">
+        <svg viewBox="0 0 600 80" preserveAspectRatio="none">
+          <path id="ecgline" d="M0,40 L150,40 L165,40 L175,18 L188,64 L200,28 L212,40 L360,40 L375,40 L385,18 L398,64 L410,28 L422,40 L600,40"/>
+        </svg>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><b>10+</b><span>years' training experience</span></div>
+        <div class="hero-stat"><b>20+</b><span>accredited courses &amp; combos</span></div>
+        <div class="hero-stat full">
+          <svg viewBox="0 0 24 24"><path d="M12 3l8 4v6c0 5-8 8-8 8s-8-3-8-8V7z" stroke-linejoin="round"/><path d="M9 12l2 2 4-4"/></svg>
+          <p>Nationally recognised units delivered under our partner RTO — certificates your auditors and insurers accept.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- TRUST BAND -->
+<div class="trustband">
+  <div class="wrap">
+    <div><svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6 4.4 2.3 7.2-6.3-4.6L5.7 21l2.3-7.2-6-4.4h7.6z"/></svg> Nationally recognised</div>
+    <div><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10"/></svg> Audit-ready paperwork</div>
+    <div><svg viewBox="0 0 24 24"><path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="9"/></svg> Flexible scheduling</div>
+    <div><svg viewBox="0 0 24 24"><path d="M3 12h18M3 6h18M3 18h18"/></svg> On-site &amp; blended delivery</div>
+    <div><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Site-specific scenarios</div>
+  </div>
+</div>
+
+<!-- INDUSTRIES -->
+<section class="industries" id="industries">
+  <div class="wrap">
+    <div class="shead reveal">
+      <span class="kicker">Built for your industry</span>
+      <h2>Training that fits the way <em>you</em> actually work</h2>
+      <p>Generic first aid isn't enough when you're being audited, insured or inspected. We tailor every course to your environment, your risks and your compliance obligations.</p>
+    </div>
+    <div class="ind-grid">
+
+      <div class="ind reveal">
+        <div class="top">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V8l7-4 7 4v13M9 21v-6h6v6"/></svg></div>
+          <div><h3>High-Risk Worksites</h3><div class="who">Construction · Mining · Manufacturing</div></div>
+        </div>
+        <p>Strict WHS obligations and heavy penalties for non-compliance. We deliver the exact units of competency you need, on your schedule, with the documentation auditors demand.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> HLTAID009 / 011 mapped to your refresher cycle</li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> Scenarios built around site hazards — trauma, crush, chemical</li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> Flexible scheduling to minimise downtime</li>
+        </ul>
+      </div>
+
+      <div class="ind reveal">
+        <div class="top">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M3 9l9-5 9 5-9 5-9-5zM7 11v5c0 1 2 3 5 3s5-2 5-3v-5"/></svg></div>
+          <div><h3>Education &amp; Childcare</h3><div class="who">Schools · Daycare · OOSH</div></div>
+        </div>
+        <p>The stakes are highest where the clients are children. We deliver the education &amp; care unit with trainers skilled in paediatric emergencies — and we work around your term and holiday windows.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> HLTAID012 — first aid in an education &amp; care setting</li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> Asthma, anaphylaxis &amp; choking focus for kids</li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> Booked into school-holiday &amp; pupil-free days</li>
+        </ul>
+      </div>
+
+      <div class="ind reveal">
+        <div class="top">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 8h16l-1 12H5L4 8zM8 8V6a4 4 0 018 0v2"/></svg></div>
+          <div><h3>Hospitality &amp; Events</h3><div class="who">Restaurants · Hotels · Venues</div></div>
+        </div>
+        <p>High turnover means constant re-training. We keep new hires compliant fast, with blended options that fit around shift work — so staff are certified before they start.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> Blended online theory + short practical sessions</li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> Rapid certification turnaround for new starters</li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> Burns, choking &amp; venue-specific scenarios</li>
+        </ul>
+      </div>
+
+      <div class="ind reveal">
+        <div class="top">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-7-10a7 7 0 0114 0c0 5.5-7 10-7 10z"/><circle cx="12" cy="11" r="2.5"/></svg></div>
+          <div><h3>Community &amp; Events</h3><div class="who">Clubs · Groups · Coordinators</div></div>
+        </div>
+        <p>Tight budgets, real liability. With no dedicated safety officer, you need plain-English guidance — we tell you exactly how many trained people, what kit, and what your event needs.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> Jargon-free advice on numbers &amp; requirements</li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> First aid kit supply, checks &amp; restocking</li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> Group rates &amp; in-home workshop options</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- COURSES -->
+<section class="courses" id="courses">
+  <div class="wrap">
+    <div class="shead center reveal">
+      <span class="kicker">Nationally recognised courses</span>
+      <h2>Choose a course — or let us build your combo</h2>
+      <p>Over 20 standalone units and combo sets. Mix and match to cover your whole team in a single visit.</p>
+    </div>
+    <div class="course-grid">
+      <div class="course reveal"><span class="code">HLTAID009</span><h3>Provide CPR</h3><p>A quick, practical refresher for your CPR skills. Blended online or face-to-face.</p><div class="meta"><svg viewBox="0 0 24 24"><path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="9"/></svg> Renew every 12 months</div></div>
+      <div class="course reveal"><span class="code">HLTAID011</span><h3>Provide First Aid</h3><p>The workplace standard. Includes Provide CPR (009) and Basic Life Support (010).</p><div class="meta"><svg viewBox="0 0 24 24"><path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="9"/></svg> Renew every 3 years</div></div>
+      <div class="course reveal"><span class="code">HLTAID012</span><h3>First Aid in an Education &amp; Care Setting</h3><p>Includes 011, 009 &amp; 010 with a focus on performing first aid on children.</p><div class="meta"><svg viewBox="0 0 24 24"><path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="9"/></svg> Renew every 3 years</div></div>
+      <div class="course reveal"><span class="code">22702VIC · 22578VIC</span><h3>Asthma &amp; Anaphylaxis</h3><p>What to do in an asthma or anaphylaxis emergency — puffers, spacers &amp; autoinjectors.</p><div class="meta"><svg viewBox="0 0 24 24"><path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="9"/></svg> Renew as your industry requires</div></div>
+      <div class="course reveal"><span class="code">MENTAL HEALTH</span><h3>Mental Health First Aid</h3><p>Recognise and respond to mental health crises in your workplace or community.</p><div class="meta"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> Workshop &amp; accredited options</div></div>
+      <div class="course reveal"><span class="code">WORKSHOP</span><h3>Baby &amp; Kids First Aid</h3><p>A relaxed in-home or group workshop for parents, carers and families.</p><div class="meta"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> Host at home or your venue</div></div>
+    </div>
+    <p class="course-note">Save $20 when you book 2 or more courses · First aid kits &amp; defibrillator supply available · Ask about custom workshops for your team.</p>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="why" id="why">
+  <div class="wrap">
+    <div class="shead reveal">
+      <span class="kicker">Why teams choose us</span>
+      <h2>Compliance handled. Stress removed.</h2>
+      <p>Only a fraction of Australian businesses are fully confident they meet current WHS codes. We make sure yours is one of them.</p>
+    </div>
+    <div class="why-grid">
+      <div class="feat reveal"><div class="ic"><svg viewBox="0 0 24 24"><path d="M4 5h16v14H4zM8 9h8M8 13h8M8 17h5"/></svg></div><h3>Audit-ready documentation</h3><p>Correct unit codes, signatures and records every time. Nothing that gets your certificate rejected by an auditor or insurer.</p></div>
+      <div class="feat reveal"><div class="ic"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V8l7-4 7 4v13"/></svg></div><h3>We come to you</h3><p>On-site at your workplace, venue or centre across the Blue Mountains and Greater Western Sydney — minimal downtime, maximum convenience.</p></div>
+      <div class="feat reveal"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="9"/></svg></div><h3>Flexible scheduling</h3><p>Around shifts, school holidays and production runs. Day, evening or weekend — booked when it suits your operation.</p></div>
+      <div class="feat reveal"><div class="ic"><svg viewBox="0 0 24 24"><path d="M4 6h16v10H4zM8 20h8M12 16v4"/></svg></div><h3>Blended learning</h3><p>Complete the theory online, then a short hands-on session. Less time off the floor, same nationally recognised outcome.</p></div>
+      <div class="feat reveal"><div class="ic"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div><h3>Tailored to your hazards</h3><p>A simulated construction-site incident or a kitchen burn — we adapt scenarios to what your people will actually face.</p></div>
+      <div class="feat reveal"><div class="ic"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h7l-1 8 10-12h-7z"/></svg></div><h3>Fast turnaround</h3><p>New starters certified before their first shift. Quick enrolment and prompt certificates so you're never caught short.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="steps" id="how">
+  <div class="wrap">
+    <div class="shead center reveal">
+      <span class="kicker">Simple from start to certificate</span>
+      <h2>How it works</h2>
+    </div>
+    <div class="step-grid">
+      <div class="step reveal"><div class="num">01</div><h3>Tell us your needs</h3><p>Your industry, headcount, units required and any site-specific risks. One quick call or form.</p></div>
+      <div class="step reveal"><div class="num">02</div><h3>We tailor a plan</h3><p>We map the right units, scenarios and schedule, and send a clear quote — no jargon, no surprises.</p></div>
+      <div class="step reveal"><div class="num">03</div><h3>We train your team</h3><p>On-site or blended, around your roster. Engaging, practical sessions led by experienced trainers.</p></div>
+      <div class="step reveal"><div class="num">04</div><h3>You get certified</h3><p>Nationally recognised, audit-ready certificates issued promptly — ready for your records and inspectors.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews">
+  <div class="wrap">
+    <div class="shead center reveal">
+      <span class="kicker">What people say about us</span>
+      <h2>Trusted across high-stakes roles</h2>
+    </div>
+    <div class="rev-grid">
+      <div class="rev reveal">
+        <div class="stars">★★★★★</div>
+        <blockquote>"A wonderful trainer with great communication skills who made me feel informed and at ease completing my certification — very knowledgeable in CPR for both adults and children, and clear in explaining and improving my technique."</blockquote>
+        <div class="who"><div class="av">L</div><div><b>Lucy</b><small>Nurse</small></div></div>
+      </div>
+      <div class="rev reveal">
+        <div class="stars">★★★★★</div>
+        <blockquote>"My staff and I completed our first aid training with Life First Aid — very impressed with our trainer's knowledge, support and professionalism. Highly recommended, and we'll definitely return for future training."</blockquote>
+        <div class="who"><div class="av">P</div><div><b>Peta</b><small>Landscape Designer</small></div></div>
+      </div>
+      <div class="rev reveal">
+        <div class="stars">★★★★★</div>
+        <blockquote>"A relaxed and professional trainer who made the training and assessments both engaging and interesting. If I ever need further training, I'll be contacting Life First Aid again."</blockquote>
+        <div class="who"><div class="av">A</div><div><b>Alex</b><small>Security Guard</small></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE AREA -->
+<section class="area">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="kicker">Local &amp; mobile</span>
+      <h2>Based in Blaxland. We come to you.</h2>
+      <p>We deliver on-site training right across the Blue Mountains and into Greater Western Sydney — wherever your team, venue or worksite is.</p>
+      <div class="towns">
+        <span class="town">Blaxland</span><span class="town">Glenbrook</span><span class="town">Springwood</span>
+        <span class="town">Katoomba</span><span class="town">Penrith</span><span class="town">St Marys</span>
+        <span class="town">Blacktown</span><span class="town">Mount Druitt</span><span class="town">Richmond</span>
+        <span class="town">+ surrounding areas</span>
+      </div>
+    </div>
+    <div class="map reveal">
+      <div>
+        <svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-7-10a7 7 0 0114 0c0 5.5-7 10-7 10z"/><circle cx="12" cy="11" r="2.5"/></svg>
+        Blaxland, NSW 2774
+        <small>Embed your Google Map here once live</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA / QUOTE -->
+<section class="cta" id="quote">
+  <div class="wrap">
+    <div class="cta-box reveal">
+      <div>
+        <h2>Get a tailored quote for your team</h2>
+        <p class="lead">Tell us a little about your workplace and we'll come back with the right units, a schedule that fits, and a clear price — usually same business day.</p>
+        <ul class="cta-list">
+          <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> No-obligation quote &amp; free consultation</li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> On-site, blended or in-class options</li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> Audit-ready certificates included</li>
+        </ul>
+        <div class="cta-actions">
+          <a href="tel:+61481360972" class="btn btn-primary">📞 Call +61 481 360 972</a>
+          <a href="mailto:info@lifefirstaidcourses.com.au" class="btn btn-ghost" style="color:#fff;border-color:rgba(255,255,255,.3)">✉ info@lifefirstaidcourses.com.au</a>
+        </div>
+      </div>
+      <div class="form">
+        <label for="name">Your name</label>
+        <input id="name" type="text" placeholder="Jane Smith" />
+        <label for="org">Organisation &amp; industry</label>
+        <input id="org" type="text" placeholder="e.g. ABC Constructions — building site" />
+        <label for="ind">What best describes you?</label>
+        <select id="ind">
+          <option>High-risk worksite (construction / mining / manufacturing)</option>
+          <option>Education &amp; childcare</option>
+          <option>Hospitality &amp; events</option>
+          <option>Community group / event</option>
+          <option>Individual / family</option>
+        </select>
+        <label for="people">How many people need training?</label>
+        <input id="people" type="text" placeholder="e.g. 12" />
+        <label for="msg">Anything else?</label>
+        <textarea id="msg" rows="2" placeholder="Units needed, preferred dates, site location…"></textarea>
+        <button class="btn btn-primary" id="sendBtn" type="button">Request my quote →</button>
+        <p class="fineprint">Opens your email so you can send — or just call us directly.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="logo"><span class="cross"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span><b style="color:#fff">Life First Aid<span>BLAXLAND · NSW</span></b></div>
+        <p>Nationally recognised first aid training for workplaces, families and communities across the Blue Mountains &amp; Greater Western Sydney. Delivered under our partner RTO. <span class="edit">[Add your RTO partner name &amp; number here]</span></p>
+      </div>
+      <div>
+        <h4>Courses</h4>
+        <ul>
+          <li><a href="#courses">Provide CPR (HLTAID009)</a></li>
+          <li><a href="#courses">Provide First Aid (HLTAID011)</a></li>
+          <li><a href="#courses">Education &amp; Care (HLTAID012)</a></li>
+          <li><a href="#courses">Asthma &amp; Anaphylaxis</a></li>
+          <li><a href="#courses">Mental Health First Aid</a></li>
+        </ul>
+      </div>
+      <div class="foot-contact">
+        <h4>Contact</h4>
+        <ul>
+          <li><div><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-7-10a7 7 0 0114 0c0 5.5-7 10-7 10z"/><circle cx="12" cy="11" r="2.5"/></svg> Blaxland, NSW 2774</div></li>
+          <li><div><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z M22 6l-10 7L2 6"/></svg> <a href="mailto:info@lifefirstaidcourses.com.au">info@lifefirstaidcourses.com.au</a></div></li>
+          <li><div><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-3 2a14 14 0 006 6l2-3 5 2v4a2 2 0 01-2 2A18 18 0 013 6a2 2 0 012-2z"/></svg> <a href="tel:+61481360972">+61 481 360 972</a></div></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <div>© <span id="yr"></span> Life First Aid Courses. Nationally recognised training.</div>
+      <div>Facebook · Instagram · <a href="#top">Back to top ↑</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.getElementById('yr').textContent=new Date().getFullYear();
+
+/* nav scroll + mobile */
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>{nav.style.boxShadow=scrollY>20?'0 6px 24px -16px rgba(18,34,44,.4)':'none';});
+const burger=document.getElementById('burger'),navlinks=document.getElementById('navlinks');
+burger.addEventListener('click',()=>navlinks.classList.toggle('open'));
+navlinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>navlinks.classList.remove('open')));
+
+/* reveal on scroll */
+const io=new IntersectionObserver((es)=>{es.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('in'),(i%3)*80);io.unobserve(e.target);}});},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* animated ECG draw loop */
+const ecg=document.getElementById('ecgline');
+if(ecg){
+  const len=ecg.getTotalLength();
+  ecg.style.strokeDasharray=len;
+  let off=len;
+  function tick(){off-=len/120;if(off<=0)off=len;ecg.style.strokeDashoffset=off;requestAnimationFrame(tick);}
+  tick();
+}
+
+/* quote form -> mailto (privacy-safe, no third party) */
+document.getElementById('sendBtn').addEventListener('click',()=>{
+  const v=id=>document.getElementById(id).value.trim();
+  const body=`Name: ${v('name')}%0D%0AOrganisation/Industry: ${v('org')}%0D%0AType: ${document.getElementById('ind').value}%0D%0APeople to train: ${v('people')}%0D%0A%0D%0ADetails: ${v('msg')}`;
+  window.location.href=`mailto:info@lifefirstaidcourses.com.au?subject=Training quote request&body=${body}`;
+});
+</script>
+</body>
+</html>
