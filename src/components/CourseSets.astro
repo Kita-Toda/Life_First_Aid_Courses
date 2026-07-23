@@ -1,0 +1,55 @@
+---
+import { courseSets, setGroupLabel, setGroupClass } from '../data/courseSets';
+import type { SetGroup } from '../data/courseSets';
+
+const groupOrder: SetGroup[] = ['firstaid', 'workplace', 'advanced', 'mental', 'sports'];
+const grouped = groupOrder
+  .map(group => ({ group, sets: courseSets.filter(s => s.group === group) }))
+  .filter(g => g.sets.length > 0);
+---
+<section class="course-sets" id="course-sets">
+  <div class="wrap">
+    <div class="shead center reveal">
+      <span class="kicker">Bundle & Save</span>
+      <h2>Course Sets — Cover More In One Visit</h2>
+      <p>Pre-Built Combinations Of Our Most-Requested Units. Save $20 When You Book 2 Or More Courses, Or Ask Us To Build A Custom Set For Your Team.</p>
+    </div>
+
+    {grouped.map(({ group, sets }) => (
+      <>
+        <div class="course-cat-head reveal">
+          <span class={`cat-label ${setGroupClass[group]}`}>{setGroupLabel[group]}</span>
+        </div>
+        <div class="course-grid reveal-group">
+          {sets.map(set => (
+            <a href={`/course-sets/${set.slug}`} class="course course--set reveal">
+              <div class="set-card-codes">
+                {set.codes.map(code => <span class="code">{code}</span>)}
+                {set.express && <span class="set-express-tag">Express</span>}
+              </div>
+              <h3>{set.title}</h3>
+              <p>{set.cardBlurb}</p>
+              <div class="meta">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>
+                {set.components.length} Courses In This Set
+              </div>
+              <span class="course-more-link">View Set Details →</span>
+            </a>
+          ))}
+        </div>
+      </>
+    ))}
+
+    <div class="course-footer reveal">
+      <p class="course-note">Can't See The Combination You Need? We Build Custom Course Sets To Match Your Team And Workplace.</p>
+      <a
+        href="https://lifefirstaidcourses.trainingdesk.com.au/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn btn-primary course-book-btn"
+      >
+        Browse &amp; Book All Course Sets →
+      </a>
+    </div>
+  </div>
+</section>

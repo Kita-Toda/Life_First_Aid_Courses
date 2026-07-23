@@ -1,0 +1,219 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import TopBar from '../../components/TopBar.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import { courseSets, getCourseByCode, setGroupLabel, setGroupClass } from '../../data/courseSets';
+import type { CourseSet } from '../../data/courseSets';
+
+export function getStaticPaths() {
+  return courseSets.map(set => ({
+    params: { slug: set.slug },
+    props: { set },
+  }));
+}
+
+interface Props { set: CourseSet }
+const { set } = Astro.props;
+---
+
+<Layout
+  title={`${set.title} — Course Set | Life First Aid Courses`}
+  description={set.overview.slice(0, 155)}
+>
+  <TopBar />
+  <Nav />
+  <div class="course-detail-page">
+    <div class="course-detail-hero">
+      <div class="container">
+        <a href="/#course-sets" class="back-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M19 12H5M12 5l-7 7 7 7"/>
+          </svg>
+          All Course Sets
+        </a>
+        <div class="course-detail-meta">
+          <span class={`cat-label ${setGroupClass[set.group]}`}>{setGroupLabel[set.group]}</span>
+          <span class="badge badge-acc">Course Set</span>
+          {set.express && <span class="badge badge-non">Express</span>}
+        </div>
+        <h1>
+          <span class="set-code-row">
+            {set.codes.map(c => <span class="course-detail-code">{c}</span>)}
+          </span>
+          {set.title}
+        </h1>
+        <p class="course-detail-lead">{set.overview}</p>
+        <a href={set.bookingUrl} class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+          Book This Course Set
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="course-detail-body container">
+
+      <!-- What's Included -->
+      <section class="set-included">
+        <h2 class="set-section-title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20 7L9 18l-5-5"/>
+          </svg>
+          What's Included In This Set
+        </h2>
+        <div class="set-component-grid">
+          {set.components.map(component => {
+            const detail = getCourseByCode(component.code);
+            const linked = component.slug ?? detail?.slug;
+            const blurb = detail?.description ?? component.note ?? '';
+            return (
+              <div class="set-component">
+                <div class="set-component-head">
+                  <span class="code">{component.code}</span>
+                  {component.accredited
+                    ? <span class="set-mini-badge set-mini-badge--acc">Nationally Recognised</span>
+                    : <span class="set-mini-badge set-mini-badge--non">Non-Accredited</span>
+                  }
+                </div>
+                <h3>{component.name}</h3>
+                {blurb && <p>{blurb}</p>}
+                {linked && (
+                  <a href={`/courses/${linked}`} class="course-more-link">View Full Course Details →</a>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
+      <div class="detail-grid">
+
+        <!-- Why Choose This Set -->
+        <section class="detail-card detail-card--wide">
+          <h2>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+            </svg>
+            Why Book This As A Set
+          </h2>
+          <ul class="outcomes-list">
+            {set.whyChoose.map(reason => (
+              <li>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+                {reason}
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <!-- Who Is This For -->
+        <section class="detail-card">
+          <h2>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="8" r="4"/>
+              <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+            </svg>
+            Who Is This Set For?
+          </h2>
+          <p class="audience-text">{set.audience}</p>
+        </section>
+
+        <!-- Renewal -->
+        <section class="detail-card">
+          <h2>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/>
+              <path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/>
+            </svg>
+            Certificate Renewal
+          </h2>
+          <p class="renewal-text">{set.renewalNote}</p>
+        </section>
+
+      </div>
+
+      <!-- CTA -->
+      <div class="course-detail-cta">
+        <p>Ready to book this set or need it tailored for your team?</p>
+        <div class="cta-actions">
+          <a href={set.bookingUrl} class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+            Book Online
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+          <a href="tel:0481360972" class="btn btn-ghost">Call 0481 360 972</a>
+        </div>
+        <div class="rto-partner-strip rto-partner-strip--detail">
+          <span class="rto-partner-label">Delivered In Partnership With A Registered Training Organisation</span>
+          <img src="/allens-rto.png" alt="Allens Training — Registered Training Organisation" class="rto-partner-logo" />
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <Footer />
+</Layout>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  import 'animate.css';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.from('.course-detail-hero', {
+    opacity: 0,
+    y: 40,
+    duration: 0.7,
+    ease: 'power3.out',
+  });
+
+  gsap.from('.back-link, .course-detail-meta', {
+    opacity: 0,
+    y: 20,
+    duration: 0.5,
+    stagger: 0.1,
+    delay: 0.2,
+    ease: 'power2.out',
+  });
+
+  gsap.from('.set-component', {
+    scrollTrigger: {
+      trigger: '.set-component-grid',
+      start: 'top 85%',
+    },
+    opacity: 0,
+    y: 30,
+    duration: 0.5,
+    stagger: 0.1,
+    ease: 'power2.out',
+  });
+
+  gsap.from('.detail-card', {
+    scrollTrigger: {
+      trigger: '.detail-grid',
+      start: 'top 85%',
+    },
+    opacity: 0,
+    y: 30,
+    duration: 0.5,
+    stagger: 0.12,
+    ease: 'power2.out',
+  });
+
+  gsap.from('.course-detail-cta', {
+    scrollTrigger: {
+      trigger: '.course-detail-cta',
+      start: 'top 90%',
+    },
+    opacity: 0,
+    y: 24,
+    duration: 0.5,
+    ease: 'power2.out',
+  });
+</script>

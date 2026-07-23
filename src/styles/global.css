@@ -1964,3 +1964,164 @@ footer a:hover {
     padding: 4rem 3rem 7rem;
   }
 }
+
+/* ---- COURSE SETS (home page section) ---- */
+.course-sets {
+  padding: 64px 0;
+  background: var(--card, #fff);
+  border-top: 1px solid var(--line);
+}
+
+@media (min-width: 920px) {
+  .course-sets {
+    padding: 84px 0;
+  }
+}
+
+/* Set cards are anchors — reset link styling */
+.course--set {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.set-card-codes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.course--set .set-card-codes .code {
+  margin-bottom: 0;
+}
+
+.set-express-tag {
+  font-family: 'Public Sans', sans-serif;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #8a5a00;
+  background: #fff4df;
+  padding: 5px 10px;
+  border-radius: 7px;
+}
+
+/* "What's included" block on set detail page */
+.set-included {
+  margin-bottom: 3rem;
+}
+
+.set-section-title {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1.15rem;
+  font-family: 'Bricolage Grotesque', sans-serif;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin-bottom: 1.25rem;
+}
+
+.set-section-title svg {
+  flex-shrink: 0;
+  color: var(--teal);
+}
+
+.set-component-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.set-component {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 1.35rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.set-component-head {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.65rem;
+}
+
+.set-component .code {
+  font-family: 'Public Sans', sans-serif;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--teal-deep);
+  background: var(--teal-soft);
+  padding: 5px 10px;
+  border-radius: 7px;
+  text-transform: uppercase;
+}
+
+.set-mini-badge {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.18rem 0.5rem;
+  border-radius: 4px;
+}
+.set-mini-badge--acc {
+  background: var(--teal-soft);
+  color: var(--teal-deep);
+  border: 1px solid rgba(13,124,107,0.3);
+}
+.set-mini-badge--non {
+  background: #fff4df;
+  color: #8a5a00;
+  border: 1px solid rgba(240,169,43,0.4);
+}
+
+.set-component h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 0.4rem;
+}
+
+.set-component p {
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--slate);
+  margin-bottom: 0.75rem;
+  flex: 1;
+}
+
+/* Multiple codes inline in the set detail hero heading */
+.set-code-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.set-code-row .course-detail-code {
+  display: inline-block;
+  margin-bottom: 0;
+  padding: 0.2rem 0.55rem;
+  background: rgba(240,169,43,0.14);
+  border-radius: 5px;
+}
+
+@media (min-width: 600px) {
+  .set-component-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 920px) {
+  .set-component-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
