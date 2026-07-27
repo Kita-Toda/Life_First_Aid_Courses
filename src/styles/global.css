@@ -31,6 +31,12 @@ html {
   scroll-behavior: smooth;
 }
 
+/* The hidden attribute only sets display:none via the UA sheet, so any
+   display declaration in this file silently defeats it. Keep it authoritative. */
+[hidden] {
+  display: none !important;
+}
+
 body {
   font-family: 'Public Sans', sans-serif;
   color: var(--ink);
@@ -212,9 +218,22 @@ nav {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(251, 250, 244, 0.95);
-  backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--line);
+}
+
+/* The frosted background lives on a pseudo-element, not on nav itself.
+   backdrop-filter makes an element a containing block for position:fixed
+   descendants, which would trap the mobile drawer and its overlay inside
+   the nav strip instead of the viewport. */
+nav::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: rgba(251, 250, 244, 0.95);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  pointer-events: none;
 }
 
 nav .wrap {
@@ -245,18 +264,21 @@ nav .wrap {
 .rto-partnership {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 8px;
+  min-width: 0;
   font-size: 11px;
   font-weight: 600;
   color: #d7e2e0;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  white-space: nowrap;
 }
 
 .rto-logo {
-  height: 96px;
-  width: auto;
+  height: auto;
+  max-height: 96px;
+  max-width: 100%;
+  min-width: 0;
   display: block;
   object-fit: contain;
 }
@@ -271,8 +293,16 @@ nav .wrap {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  /* "safe" keeps the first links reachable once the list overflows; browsers
+     that do not support it fall back to the plain center above. */
+  justify-content: safe center;
   gap: 20px;
   padding: 40px 32px;
+  /* Phones in landscape are too short for the full link list; let the panel
+     scroll instead of spilling its links onto the page behind it. */
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
   transform: translateX(100%);
   transition: transform 0.32s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 200;
@@ -303,11 +333,16 @@ nav .wrap {
 .burger {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   gap: 5px;
   background: none;
   border: none;
   cursor: pointer;
   padding: 8px;
+  /* 44x44 is the Apple HIG minimum; Android Material asks for 48. */
+  min-width: 48px;
+  min-height: 48px;
   z-index: 210;
   touch-action: manipulation;
 }
@@ -344,6 +379,7 @@ nav .wrap {
     align-items: center;
     gap: 26px;
     padding: 0;
+    overflow: visible;
     transform: none;
     transition: none;
     z-index: auto;
@@ -869,11 +905,14 @@ nav .wrap {
   text-transform: uppercase;
   padding: 8px 18px;
   border-radius: 30px;
-  white-space: nowrap;
+  /* Long labels like "Workplace & Compliance Combinations" overflow sub-360px
+     screens if they cannot wrap. */
+  max-width: 100%;
 }
 
 .cat-label::before {
   content: "";
+  flex-shrink: 0;
   width: 8px;
   height: 8px;
   border-radius: 50%;
@@ -1359,7 +1398,8 @@ nav .wrap {
   padding: 12px 13px;
   color: #fff;
   font-family: inherit;
-  font-size: 15px;
+  /* Must stay >= 16px: iOS Safari zooms the page on focus below that and never zooms back. */
+  font-size: 16px;
   margin-bottom: 14px;
   min-height: 48px;
   -webkit-appearance: none;
@@ -1572,8 +1612,9 @@ footer a:hover {
 }
 
 .rto-partner-logo {
-  height: 112px;
-  width: auto;
+  height: auto;
+  max-height: 112px;
+  max-width: 100%;
   object-fit: contain;
   display: block;
 }
@@ -1594,7 +1635,8 @@ footer a:hover {
 }
 
 .rto-partner-logo--footer {
-  height: 88px;
+  height: auto;
+  max-height: 88px;
   border-radius: 6px;
   padding: 4px 8px;
   background: #fff;
@@ -1613,6 +1655,9 @@ footer a:hover {
     flex-direction: row;
     justify-content: center;
     text-align: left;
+    /* The label does not shrink, so without wrapping the logo is pushed past
+       the container on 600-900px screens (tablets, phones in landscape). */
+    flex-wrap: wrap;
   }
   .rto-partner-label {
     flex-shrink: 0;
