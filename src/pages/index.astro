@@ -32,50 +32,6 @@ import Footer from '../components/Footer.astro';
 </Layout>
 
 <script>
-  // Year in footer
-  const yrEl = document.getElementById('yr');
-  if (yrEl) yrEl.textContent = String(new Date().getFullYear());
-
-  // Nav scroll shadow
-  const nav = document.getElementById('nav');
-  if (nav) {
-    window.addEventListener('scroll', () => {
-      nav.style.boxShadow = window.scrollY > 20
-        ? '0 6px 24px -16px rgba(18,34,44,.4)'
-        : 'none';
-    }, { passive: true });
-  }
-
-  // Mobile burger menu
-  const burger = document.getElementById('burger');
-  const navlinks = document.getElementById('navlinks');
-  const navOverlay = document.getElementById('navOverlay');
-
-  function openNav() {
-    navlinks?.classList.add('open');
-    navOverlay?.classList.add('open');
-    burger?.setAttribute('aria-expanded', 'true');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeNav() {
-    navlinks?.classList.remove('open');
-    navOverlay?.classList.remove('open');
-    burger?.setAttribute('aria-expanded', 'false');
-    document.body.style.overflow = '';
-  }
-
-  burger?.addEventListener('click', () => {
-    const isOpen = navlinks?.classList.contains('open');
-    isOpen ? closeNav() : openNav();
-  });
-
-  navOverlay?.addEventListener('click', closeNav);
-
-  navlinks?.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', closeNav);
-  });
-
   // Reveal on scroll
   const io = new IntersectionObserver((entries) => {
     entries.forEach((entry, i) => {

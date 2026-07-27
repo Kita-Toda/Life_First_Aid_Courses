@@ -11,7 +11,9 @@ const {
   description = "On-Site And Blended Nationally Recognised First Aid Training For High-Risk Industries, Childcare & Education, Hospitality And Community Groups. Audit-Ready Certificates, Flexible Scheduling, 10+ Years' Experience. Based In Blaxland, Serving The Blue Mountains & Greater Western Sydney.",
 } = Astro.props;
 
-const canonical = "https://lifefirstaidcourses.com.au";
+const siteOrigin = "https://lifefirstaidcourses.com.au";
+// Per-page canonical: fall back to the site root if Astro.site isn't configured.
+const canonical = new URL(Astro.url.pathname, Astro.site ?? siteOrigin).href;
 ---
 
 <!doctype html>
@@ -25,13 +27,17 @@ const canonical = "https://lifefirstaidcourses.com.au";
     <link rel="canonical" href={canonical} />
     <meta name="theme-color" content="#12222c" />
 
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
     <!-- Open Graph -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonical} />
     <meta property="og:locale" content="en_AU" />
-    <meta property="og:image" content="/lifefirstaidcourses-logo.png" />
+    <meta property="og:image" content={new URL("/lifefirstaidcourses-logo.png", Astro.site ?? siteOrigin).href} />
 
     <!-- Arm reveal animations before first paint -->
     <script is:inline>document.documentElement.classList.add('js-reveal')</script>
