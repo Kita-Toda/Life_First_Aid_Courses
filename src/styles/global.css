@@ -2114,14 +2114,122 @@ footer a:hover {
   border-radius: 5px;
 }
 
+/* Set-specific context on a component that also has a generic course description */
+.set-component-note {
+  flex: 0 0 auto;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--teal-deep);
+  background: var(--teal-soft);
+  border-radius: 6px;
+  padding: 0.45rem 0.6rem;
+  margin-bottom: 0.75rem;
+}
+
+/* Clarifying footnote under a detail card's list */
+.detail-card-note {
+  font-size: 0.78rem;
+  line-height: 1.5;
+  color: var(--slate);
+  margin-top: 0.85rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--line);
+}
+
+/* Multi-course discount reminder on set detail pages */
+.set-saving-strip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  text-align: center;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #8a5a00;
+  background: #fff4df;
+  border: 1px solid rgba(240, 169, 43, 0.4);
+  border-radius: 12px;
+  padding: 0.9rem 1.25rem;
+  margin-bottom: 3rem;
+}
+
+.set-saving-strip svg {
+  flex-shrink: 0;
+}
+
+/* "Also available in these sets" block on course detail pages */
+.related-sets {
+  margin-bottom: 3rem;
+}
+
+.related-sets-intro {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--slate);
+  margin: -0.5rem 0 1.25rem;
+}
+
+.related-sets-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.related-set {
+  display: flex;
+  flex-direction: column;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 1.35rem;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.related-set:hover {
+  border-color: var(--teal);
+  transform: translateY(-2px);
+}
+
+.related-set .code {
+  font-family: 'Public Sans', sans-serif;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--teal-deep);
+  background: var(--teal-soft);
+  padding: 5px 10px;
+  border-radius: 7px;
+  text-transform: uppercase;
+}
+
+.related-set h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 0.4rem;
+}
+
+.related-set p {
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--slate);
+  margin-bottom: 0.75rem;
+  flex: 1;
+}
+
 @media (min-width: 600px) {
-  .set-component-grid {
+  .set-component-grid,
+  .related-sets-grid {
     grid-template-columns: 1fr 1fr;
   }
 }
 
 @media (min-width: 920px) {
-  .set-component-grid {
+  .set-component-grid,
+  .related-sets-grid {
     grid-template-columns: repeat(3, 1fr);
   }
 }

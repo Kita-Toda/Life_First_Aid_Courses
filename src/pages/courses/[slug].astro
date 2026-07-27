@@ -5,6 +5,7 @@ import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
 import { courses } from '../../data/courses';
 import type { CourseDetail } from '../../data/courses';
+import { getSetsForCourse } from '../../data/courseSets';
 
 export function getStaticPaths() {
   return courses.map(course => ({
@@ -15,6 +16,10 @@ export function getStaticPaths() {
 
 interface Props { course: CourseDetail }
 const { course } = Astro.props;
+
+// 'Workshop' is a shared placeholder code across several non-accredited sessions,
+// so it would match sets it isn't actually part of — only cross-link real unit codes.
+const relatedSets = course.code === 'Workshop' ? [] : getSetsForCourse(course.code);
 
 const categoryLabel: Record<CourseDetail['category'], string> = {
   core: 'Core First Aid',
@@ -184,6 +189,38 @@ const categoryClass: Record<CourseDetail['category'], string> = {
 
       </div>
 
+      <!-- Course sets containing this unit -->
+      {relatedSets.length > 0 && (
+        <section class="related-sets">
+          <h2 class="set-section-title">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="7" height="7" rx="1.5"/>
+              <rect x="14" y="3" width="7" height="7" rx="1.5"/>
+              <rect x="3" y="14" width="7" height="7" rx="1.5"/>
+              <rect x="14" y="14" width="7" height="7" rx="1.5"/>
+            </svg>
+            Also Available In These Course Sets
+          </h2>
+          <p class="related-sets-intro">
+            Cover more in one visit — {course.code} is included in the following pre-built
+            combinations. Save $20 when you book 2 or more courses together.
+          </p>
+          <div class="related-sets-grid">
+            {relatedSets.map(set => (
+              <a href={`/course-sets/${set.slug}`} class="related-set">
+                <div class="set-card-codes">
+                  {set.codes.map(c => <span class="code">{c}</span>)}
+                  {set.express && <span class="set-express-tag">Express</span>}
+                </div>
+                <h3>{set.title}</h3>
+                <p>{set.cardBlurb}</p>
+                <span class="course-more-link">View Set Details →</span>
+              </a>
+            ))}
+          </div>
+        </section>
+      )}
+
       <!-- CTA -->
       <div class="course-detail-cta">
         <p>Ready to book or have a question about this course?</p>
@@ -244,6 +281,21 @@ const categoryClass: Record<CourseDetail['category'], string> = {
     stagger: 0.12,
     ease: 'power2.out',
   });
+
+  // Related course sets
+  if (document.querySelector('.related-set')) {
+    gsap.from('.related-set', {
+      scrollTrigger: {
+        trigger: '.related-sets-grid',
+        start: 'top 85%',
+      },
+      opacity: 0,
+      y: 30,
+      duration: 0.5,
+      stagger: 0.1,
+      ease: 'power2.out',
+    });
+  }
 
   // CTA block
   gsap.from('.course-detail-cta', {

@@ -28,19 +28,20 @@ export interface CourseSet {
 
 const ROOT = 'https://lifefirstaidcourses.trainingdesk.com.au';
 
-// Convenience references so component names/slugs stay in sync with courses.ts
-function comp(code: string, fallback?: Partial<SetComponent>): SetComponent {
+// Convenience references so component names/slugs stay in sync with courses.ts.
+// Any `overrides` supplied by the caller win over the courses.ts values, so a set
+// can add set-specific context (e.g. a delivery note) to an otherwise shared unit.
+function comp(code: string, overrides?: Partial<SetComponent>): SetComponent {
   const c = courses.find(x => x.code.toLowerCase() === code.toLowerCase());
-  if (c) {
-    return { code: c.code, name: c.name, slug: c.slug, accredited: c.accredited };
-  }
-  return {
-    code,
-    name: fallback?.name ?? code,
-    accredited: fallback?.accredited ?? true,
-    note: fallback?.note,
-    slug: fallback?.slug,
-  };
+  const base: SetComponent = c
+    ? { code: c.code, name: c.name, slug: c.slug, accredited: c.accredited }
+    : { code, name: code, accredited: true };
+
+  if (!overrides) return base;
+  const defined = Object.fromEntries(
+    Object.entries(overrides).filter(([, v]) => v !== undefined)
+  );
+  return { ...base, ...defined };
 }
 
 export const courseSets: CourseSet[] = [
@@ -462,8 +463,20 @@ export const courseSets: CourseSet[] = [
       'Nationally recognised units for club and community sport',
     ],
     components: [
-      { code: 'SISSSCO015', name: 'Provide First Aid & Injury Management In A Sport Setting', accredited: true },
-      { code: 'SISSSPT001', name: 'Provide Sports Trainer Support', accredited: true },
+      {
+        code: 'SISSSCO015',
+        name: 'Provide First Aid & Injury Management In A Sport Setting',
+        accredited: true,
+        slug: 'sisss00118',
+        note: 'Delivered as part of the SISSS00118 Sports Trainer Level 1 skill set',
+      },
+      {
+        code: 'SISSSPT001',
+        name: 'Provide Sports Trainer Support',
+        accredited: true,
+        slug: 'sisss00118',
+        note: 'Delivered as part of the SISSS00118 Sports Trainer Level 1 skill set',
+      },
     ],
     renewalNote: 'Prerequisite: HLTAID011 Provide First Aid (renew every 3 years).',
     bookingUrl: `${ROOT}/courses/level-1-sports-trainer-course-set-101211`,
@@ -495,6 +508,41 @@ export function getCourseSetBySlug(slug: string): CourseSet | undefined {
 
 export function getCourseByCode(code: string): CourseDetail | undefined {
   return courses.find(c => c.code.toLowerCase() === code.toLowerCase());
+}
+
+/** Every set that contains the given unit code — used to cross-link course pages back to sets. */
+export function getSetsForCourse(code: string): CourseSet[] {
+  const target = code.toLowerCase();
+  return courseSets.filter(set =>
+    set.components.some(component => component.code.toLowerCase() === target)
+  );
+}
+
+/**
+ * Headline time commitment per component, taken from the first duration entry in
+ * courses.ts (the face-to-face figure). Components with no matching course record —
+ * information sessions and mental health units — are omitted rather than guessed at.
+ */
+export function getSetDurations(set: CourseSet): { label: string; value: string }[] {
+  return set.components.flatMap(component => {
+    const detail = getCourseByCode(component.code);
+    const first = detail?.duration[0];
+    return first ? [{ label: component.code, value: first.value }] : [];
+  });
+}
+
+/**
+ * Delivery modes shared by every component in the set. Returns nothing unless *all*
+ * components resolve to a course record — a mode list derived from only part of a set
+ * can't honestly be presented as available for the whole set.
+ */
+export function getSetDeliveryModes(set: CourseSet): string[] {
+  const modeLists = set.components.map(c => getCourseByCode(c.code)?.deliveryModes);
+  if (modeLists.some(modes => !Array.isArray(modes))) return [];
+
+  return (modeLists as string[][]).reduce((shared, modes) =>
+    shared.filter(m => modes.includes(m))
+  );
 }
 
 export const setGroupLabel: Record<SetGroup, string> = {
